@@ -13,12 +13,12 @@
             theme: {
                 extend: {
                     colors: {
-                        'oklch-65-50-29': 'oklch(0.65 0.5 29)',
-                        'oklch-0.97-0.23-109': 'oklch(0.97 0.23 109)',
-                        'oklch-0.62-0.15-142': 'oklch(0.62 0.15 142)',
-                        'oklch-0.82-0.18-197': 'oklch(0.82 0.18 197)',
-                        'oklch-0.40-0.15-273': 'oklch(0.40 0.15 273)',
-                        'oklch-0.69-0.30-327': 'oklch(0.69 0.30 327)'
+                        'oklch-65-50-29': 'oklch(0.5 0.37 29)',
+                        'oklch-0.97-0.23-109': 'oklch(0.95 0.37 109)',
+                        'oklch-0.62-0.15-142': 'oklch(0.5 0.37 142)',
+                        'oklch-0.82-0.18-197': 'oklch(0.7 0.37 197)',
+                        'oklch-0.40-0.15-273': 'oklch(0.6 0.37 271)',
+                        'oklch-0.69-0.30-327': 'oklch(0.65 0.37 327)'
                     },
                     backgroundImage: {
                         'page-background': "url('/assets/color-magic-bg.png')"
@@ -28,7 +28,7 @@
         }
     </script>
 </head>
-<body class="bg-slate-900 text-white h-dvh page-background bg-left-top bg-no-repeat bg-cover" style="background-image: url('./assets/magic-colour.png')">
+<body class="bg-slate-900 text-white h-dvh page-background bg-left-top bg-no-repeat bg-cover" style="background-image: url('./assets/app-bg.png')">
     <div class="container my-0 mx-auto h-dvh grid grid-cols-2 relative pt-20 pb-20 px-9">
         <div class="pr-6">
             <div class="absolute bottom-20 w-5/12">
@@ -46,22 +46,22 @@
         </div>
         <div id="color-boxes" class="grid grid-cols-3 gap-2">
             <div class="bg-red-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box1">
-                <span class="font-mono text-xl uppercase color-label">Red</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Red</span>
             </div>
             <div class="bg-yellow-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box2">
-                <span class="font-mono text-xl uppercase color-label">Yellow</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Yellow</span>
             </div>
             <div class="bg-green-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box3">
-                <span class="font-mono text-xl uppercase color-label">Green</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Green</span>
             </div>
             <div class="bg-cyan-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box4">
-                <span class="font-mono text-xl uppercase color-label">Cyan</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Cyan</span>
             </div>
             <div class="bg-blue-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box5">
-                <span class="font-mono text-xl uppercase color-label">Blue</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Blue</span>
             </div>
             <div class="bg-fuchsia-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box6">
-                <span class="font-mono text-xl uppercase color-label">Magenta</span>
+                <span class="font-mono text-xl uppercase bg-white text-slate-800 p-1 rounded-lg">Magenta</span>
             </div>
         </div>
     </div>
