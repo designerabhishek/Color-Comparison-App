@@ -4,38 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Standard to HD Colors Toggle</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400..900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'oklch-65-50-29': 'oklch(0.65 0.5 29)',
+                        'oklch-0.97-0.23-109': 'oklch(0.97 0.23 109)',
+                        'oklch-0.62-0.15-142': 'oklch(0.62 0.15 142)',
+                        'oklch-0.82-0.18-197': 'oklch(0.82 0.18 197)',
+                        'oklch-0.40-0.15-273': 'oklch(0.40 0.15 273)',
+                        'oklch-0.69-0.30-327': 'oklch(0.69 0.30 327)'
+                    },
+                    backgroundImage: {
+                        'page-background': "url('/assets/color-magic-bg.png')"
+                    } 
+                }
+            }
+        }
+    </script>
 </head>
-<body class="bg-slate-900 text-white h-dvh">
+<body class="bg-slate-900 text-white h-dvh page-background bg-left-top bg-no-repeat bg-cover" style="background-image: url('/assets/magic-colour.png')">
     <div class="container my-0 mx-auto h-dvh grid grid-cols-2 relative pt-20 pb-20">
-            <div class="pr-6">
-                <div class="absolute bottom-20 w-5/12">
-                    <div>
-                        <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
-                            Color Clash Academy: Master the Art of Color Comparison
-                        </h1>
-                    </div>
-                    <div>
-                        <button class="btn uppercase text-sm tracking-wide" id="color-toggle">
-                            Switch to HD Colors
-                        </button>
-                    </div>
+        <div class="pr-6">
+            <div class="absolute bottom-20 w-5/12">
+                <div>
+                    <h1 class="text-6xl font-bold mb-6 bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+                        Color Clash Academy: Master the Art of Color Comparison
+                    </h1>
+                </div>
+                <div>
+                    <button class="flex text-white bg-violet-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-e-full text-lg" id="color-toggle">
+                        Switch to HD Colors
+                    </button>
                 </div>
             </div>
-            <div id="color-boxes" class="grid grid-cols-3 gap-2">
-                <div class="bg-red-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box1"><span class="font-mono text-xl uppercase color-label">Red</span></div>
-                <div class="bg-yellow-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box2"><span class="font-mono text-xl uppercase color-label">Yellow</span></div>
-                <div class="bg-green-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box3"><span class="font-mono text-xl uppercase color-label">Green</span></div>
-                <div class="bg-cyan-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box4"><span class="font-mono text-xl uppercase color-label">Cyan</span></div>
-                <div class="bg-blue-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box5"><span class="font-mono text-xl uppercase color-label">Blue</span></div>
-                <div class="bg-fuchsia-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box6"><span class="font-mono text-xl uppercase color-label">Magenta</span></div>
+        </div>
+        <div id="color-boxes" class="grid grid-cols-3 gap-2">
+            <div class="bg-red-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box1">
+                <span class="font-mono text-xl uppercase color-label">Red</span>
+            </div>
+            <div class="bg-yellow-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box2">
+                <span class="font-mono text-xl uppercase color-label">Yellow</span>
+            </div>
+            <div class="bg-green-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box3">
+                <span class="font-mono text-xl uppercase color-label">Green</span>
+            </div>
+            <div class="bg-cyan-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box4">
+                <span class="font-mono text-xl uppercase color-label">Cyan</span>
+            </div>
+            <div class="bg-blue-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box5">
+                <span class="font-mono text-xl uppercase color-label">Blue</span>
+            </div>
+            <div class="bg-fuchsia-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box6">
+                <span class="font-mono text-xl uppercase color-label">Magenta</span>
             </div>
         </div>
-    <div id="warning" class="hidden">HD colors are not supported by your browser.</div>
-    <script src="script.js"></script>
+    </div>
+    <div id="warning" class="hidden text-center text-red-600 text-xl">
+        HD colors are not supported by your browser.
+    </div>
+    <script>
+        document.getElementById('color-toggle').addEventListener('click', function() {
+            const supportsOklch = CSS.supports('color', 'oklch(0.65 0.5 29)');
+            if (!supportsOklch) {
+                document.getElementById('warning').classList.remove('hidden');
+                return;
+            }
+
+            const colorBoxes = document.querySelectorAll('.color-box');
+            const isHd = colorBoxes[0].classList.contains('bg-red-600');
+
+            if (isHd) {
+                colorBoxes[0].classList.replace('bg-red-600', 'bg-oklch-65-50-29');
+                colorBoxes[1].classList.replace('bg-yellow-600', 'bg-oklch-0.97-0.23-109');
+                colorBoxes[2].classList.replace('bg-green-600', 'bg-oklch-0.62-0.15-142');
+                colorBoxes[3].classList.replace('bg-cyan-600', 'bg-oklch-0.82-0.18-197');
+                colorBoxes[4].classList.replace('bg-blue-600', 'bg-oklch-0.40-0.15-273');
+                colorBoxes[5].classList.replace('bg-fuchsia-600', 'bg-oklch-0.69-0.30-327');
+            } else {
+                colorBoxes[0].classList.replace('bg-oklch-65-50-29', 'bg-red-600');
+                colorBoxes[1].classList.replace('bg-oklch-0.97-0.23-109', 'bg-yellow-600');
+                colorBoxes[2].classList.replace('bg-oklch-0.62-0.15-142', 'bg-green-600');
+                colorBoxes[3].classList.replace('bg-oklch-0.82-0.18-197', 'bg-cyan-600');
+                colorBoxes[4].classList.replace('bg-oklch-0.40-0.15-273', 'bg-blue-600');
+                colorBoxes[5].classList.replace('bg-oklch-0.69-0.30-327', 'bg-fuchsia-600');
+            }
+        });
+    </script>
 </body>
 </html>
