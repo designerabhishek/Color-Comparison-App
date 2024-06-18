@@ -38,6 +38,11 @@
                     </h1>
                 </div>
                 <div>
+                    <p class="mb-6 text-xl">
+                        This web application allows users to switch between standard RGB colors and high-definition OKLCH colors to compare the visual differences. The app includes a sample text, a link, and five vibrant color boxes with labels to demonstrate the color changes.
+                    </p>
+                </div>
+                <div>
                     <button class="flex text-white bg-violet-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded-e-full text-lg" id="color-toggle">
                         Switch to HD Colors
                     </button>
@@ -48,7 +53,7 @@
             <div class="bg-red-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box1">
                 <span class="font-mono text-xl uppercase text-slate-800 p-1 rounded-lg">Red</span>
             </div>
-            <div class="bg-yellow-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box2">
+            <div class="bg-yellow-300 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box2">
                 <span class="font-mono text-xl uppercase text-slate-800 p-1 rounded-lg">Yellow</span>
             </div>
             <div class="bg-green-600 rounded-xl grid justify-end items-start tracking-widest p-4 color-box" id="box3">
@@ -81,14 +86,14 @@
 
             if (isHd) {
                 colorBoxes[0].classList.replace('bg-red-600', 'bg-oklch-65-50-29');
-                colorBoxes[1].classList.replace('bg-yellow-600', 'bg-oklch-0.97-0.23-109');
+                colorBoxes[1].classList.replace('bg-yellow-300', 'bg-oklch-0.97-0.23-109');
                 colorBoxes[2].classList.replace('bg-green-600', 'bg-oklch-0.62-0.15-142');
                 colorBoxes[3].classList.replace('bg-cyan-600', 'bg-oklch-0.82-0.18-197');
                 colorBoxes[4].classList.replace('bg-blue-600', 'bg-oklch-0.40-0.15-273');
                 colorBoxes[5].classList.replace('bg-fuchsia-600', 'bg-oklch-0.69-0.30-327');
             } else {
                 colorBoxes[0].classList.replace('bg-oklch-65-50-29', 'bg-red-600');
-                colorBoxes[1].classList.replace('bg-oklch-0.97-0.23-109', 'bg-yellow-600');
+                colorBoxes[1].classList.replace('bg-oklch-0.97-0.23-109', 'bg-yellow-300');
                 colorBoxes[2].classList.replace('bg-oklch-0.62-0.15-142', 'bg-green-600');
                 colorBoxes[3].classList.replace('bg-oklch-0.82-0.18-197', 'bg-cyan-600');
                 colorBoxes[4].classList.replace('bg-oklch-0.40-0.15-273', 'bg-blue-600');
